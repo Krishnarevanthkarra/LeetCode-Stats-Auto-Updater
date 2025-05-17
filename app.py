@@ -158,13 +158,10 @@ if __name__ == '__main__':
         file.write(generated_design)
     
     base_url = "https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats/Display.svg"
+    os.chdir("..")
+    os.chdir("Krishnarevanthkarra")
 
-    readme_path = os.path.join("..", "Krishnarevanthkarra", "README.md")
-
-    if not os.path.exists(readme_path):
-        raise FileNotFoundError(f"README.md not found at: {readme_path}")
-
-    with open(readme_path) as file:
+    with open("README.md", "w") as file:
         content = file.read()
 
     timestamp = int(time.time())
