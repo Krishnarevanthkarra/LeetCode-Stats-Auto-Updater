@@ -158,10 +158,9 @@ if __name__ == '__main__':
         file.write(generated_design)
     
     base_url = "https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats/Display.svg"
-    os.chdir("..")
-    os.chdir("Krishnarevanthkarra")
+    readme_path = "../Krishnarevanthkarra/README.md"
 
-    with open("README.md", "w") as file:
+    with open(readme_path, "w") as file:
         content = file.read()
 
     timestamp = int(time.time())
