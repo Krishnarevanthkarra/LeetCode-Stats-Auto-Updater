@@ -21,7 +21,7 @@ class LeetCodeStats(BaseModel):
     languages_used: list
 
 #configuration
-leetcode_username = "Dileep_Karra"
+leetcode_username = "Krishna_Revanth_Karra"
 graphql_url = "https://leetcode.com/graphql"
 query = """query($username: String!){
                 matchedUser(username: $username){
