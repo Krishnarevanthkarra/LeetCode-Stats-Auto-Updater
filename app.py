@@ -155,7 +155,7 @@ def generate_stats_svg(stats: LeetCodeStats) -> str:
 if __name__ == '__main__':
     stats = fetch_leetcode_stats()
     generated_design = generate_stats_svg(stats)
-    with open("Display.svg", "w") as file:
+    with open(os.path.join(template_dir, "Display.svg"), "w") as file:
         file.write(generated_design)
     
     base_url = "https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats/Display.svg"
