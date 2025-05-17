@@ -146,7 +146,8 @@ def generate_lang_count(stats: LeetCodeStats) -> str:
 
     
 def generate_stats_svg(stats: LeetCodeStats) -> str:
-    env = Environment(loader = FileSystemLoader('.'))
+    template_dir = os.path.dirname(os.path.abspath(__file__))
+    env = Environment(loader = FileSystemLoader(template_dir))
     template = env.get_template('Design.svg')
     rendered_svg = template.render(stats = stats, dynamic_change = generate_lang_count(stats))
     return rendered_svg
