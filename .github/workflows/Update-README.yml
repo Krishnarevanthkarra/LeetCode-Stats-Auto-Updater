@@ -24,4 +24,16 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run LeetCode stats script
+        env:
+          GH_TOKEN: ${{ secrets.LCToken }}  # Add your PAT in repo secrets
         run: python app.py
+
+      - name: Commit and push changes
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "📊 Update LeetCode stats" || echo "No changes to commit"
+          git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
