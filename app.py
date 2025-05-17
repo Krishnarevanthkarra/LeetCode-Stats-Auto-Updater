@@ -159,7 +159,7 @@ if __name__ == '__main__':
     
     base_url = "https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats/Display.svg"
 
-    readme_path = os.path.join("Krishnarevanthkarra", "README.md")
+    readme_path = os.path.join("Krishnarevanthkarra/Krishnarevanthkarra", "README.md")
 
     with open(readme_path) as file:
         content = file.read()
