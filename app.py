@@ -158,7 +158,7 @@ if __name__ == '__main__':
         file.write(generated_design)
     
     base_url = "https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats/Display.svg"
-    readme_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Krishnarevanthkarra", "README.md")
+    readme_path = os.path.join("Krishnarevanthkarra", "README.md")
 
 
     with open(readme_path, "r") as file:
