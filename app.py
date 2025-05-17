@@ -159,10 +159,14 @@ if __name__ == '__main__':
     
     base_url = "https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats/Display.svg"
 
-    readme_path = os.path.join("Krishnarevanthkarra/Krishnarevanthkarra", "README.md")
+    readme_path = os.path.join("..", "Krishnarevanthkarra", "README.md")
+
+    if not os.path.exists(readme_path):
+        raise FileNotFoundError(f"README.md not found at: {readme_path}")
 
     with open(readme_path) as file:
         content = file.read()
+
     timestamp = int(time.time())
     cache_bust_url = f"{base_url}?cache_bust={timestamp}"
     new_content = f"![LeetCode Stats]({cache_bust_url})"
