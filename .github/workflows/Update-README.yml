@@ -56,7 +56,7 @@ jobs:
       # ✅ Commit and push README.md to Krishnarevanthkarra
       - name: Commit and push README.md to Krishnarevanthkarra
         run: |
-          cd ../Krishnarevanthkarra
+          cd Krishnarevanthkarra
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
           git add README.md
