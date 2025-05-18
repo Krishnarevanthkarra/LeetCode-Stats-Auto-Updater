@@ -154,11 +154,21 @@ def generate_stats_svg(stats: LeetCodeStats) -> str:
 
 if __name__ == '__main__':
     stats = fetch_leetcode_stats()
-    generated_design = generate_stats_svg(stats)
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Display.svg"), "w") as file:
-        file.write(generated_design)
+    print("Fetched Stats:", stats)
     
-    base_url = "https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats/Display.svg"
+    generated_design = generate_stats_svg(stats)
+    if not generated_design.strip():
+        print("Generated SVG is empty. Check template or stats.")
+    else:
+        print("Generated SVG successfully.")
+    
+    svg_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Display.svg")
+    print(f"Saving to {svg_file_path}")
+    with open(svg_file_path, "w") as file:
+        file.write(generated_design)
+        print("Written in Display.svg successfully")
+    
+    base_url = "https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats/main/Display.svg"
     readme_path = os.path.join("Krishnarevanthkarra", "README.md")
 
 
