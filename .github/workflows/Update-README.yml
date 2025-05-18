@@ -2,48 +2,49 @@ name: Update LeetCode Stats in README
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Runs daily at midnight UTC
+    - cron: "0 */3 * * *" # Run once for every 3 hours
   workflow_dispatch: # Allows manual triggering
 
 jobs:
   update-readme:
+    # Work flow runs on the latest unbuntu environment
     runs-on: ubuntu-latest
 
     steps:
-      # ✅ Checkout LeetCode-Stats (source code + Display.svg update target)
+      # Checkout LeetCode-Stats (source code + Display.svg update target)
       - name: Checkout LeetCode-Stats repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # Clones a GitHub Repo
         with:
-          repository: Krishnarevanthkarra/LeetCode-Stats
-          path: LeetCode-Stats
-          token: ${{ secrets.LCToken }}  # ✅ Add token here!
+          repository: Krishnarevanthkarra/LeetCode-Stats # Repo to Clone
+          path: LeetCode-Stats # Saves the cloned repo under the provided name
+          token: ${{ secrets.LCToken }}  # Token is used for Authentication instead of passwords
 
-      # ✅ Checkout Krishnarevanthkarra (where README.md lives)
+      # Checkout Krishnarevanthkarra (where README.md lives)
       - name: Checkout Krishnarevanthkarra repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # Clones a Github Rep
         with:
-          repository: Krishnarevanthkarra/Krishnarevanthkarra
-          path: Krishnarevanthkarra
-          token: ${{ secrets.LCToken }}
+          repository: Krishnarevanthkarra/Krishnarevanthkarra # Rep to clone
+          path: Krishnarevanthkarra # Saves the cloned repo under the provided name
+          token: ${{ secrets.LCToken }} # Token is used for Authentication instead of passwords
 
-      # ✅ Set up Python
+      #  Set up Python
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v5 # Set ups a clean python environment
         with:
           python-version: "3.8"
 
-      # ✅ Install dependencies (optional if no requirements.txt)
+      # Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r LeetCode-Stats/requirements.txt
 
-      # ✅ Run script to update Display.svg and README.md
+      # Run script to update Display.svg and README.md
       - name: Run Update Script
         run: |
           python LeetCode-Stats/app.py
 
-      # ✅ Commit and push Display.svg to LeetCode-Stats
+      # Commit and push Display.svg to LeetCode-Stats
       - name: Commit Display.svg to LeetCode-Stats
         run: |
           cd LeetCode-Stats
@@ -53,7 +54,7 @@ jobs:
           git diff --quiet && git diff --staged --quiet || git commit -m "Update Display.svg"
           git push origin main
 
-      # ✅ Commit and push README.md to Krishnarevanthkarra
+      # Commit and push README.md to Krishnarevanthkarra
       - name: Commit and push README.md to Krishnarevanthkarra
         run: |
           cd Krishnarevanthkarra
