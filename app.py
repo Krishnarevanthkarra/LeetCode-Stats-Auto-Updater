@@ -168,7 +168,10 @@ if __name__ == '__main__':
         file.write(generated_design)
         print("Written in Display.svg successfully")
     
-    base_url = "https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats/main/Display.svg"
+    base_url = """<img align="center"
+                src ="https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats/main/Display.svg?cache_bust={}"
+                alt ="LeetCodeStats"
+                />"""
     readme_path = os.path.join("Krishnarevanthkarra", "README.md")
 
 
@@ -176,8 +179,7 @@ if __name__ == '__main__':
         content = file.read()
 
     timestamp = int(time.time())
-    cache_bust_url = f"{base_url}?cache_bust={timestamp}"
-    new_content = f"![LeetCode Stats]({cache_bust_url})"
+    new_content = base_url.format(timestamp)
     start_tag = "<!-- LEETCODE_STATS_START -->"
     end_tag = "<!-- LEETCODE_STATS_END -->"
 
