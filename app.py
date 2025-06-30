@@ -169,7 +169,7 @@ if __name__ == '__main__':
         print("Written in Display.svg successfully")
     
     base_url = """<img align="center"
-                src ="https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats/main/Display.svg?cache_bust={}"
+                src ="https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats-Auto-Updater/main/Display.svg?cache_bust={}"
                 alt ="LeetCodeStats"
                 />"""
     readme_path = os.path.join("Krishnarevanthkarra", "README.md")
