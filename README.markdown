@@ -42,8 +42,8 @@ The project consists of a Python script, a GitHub Actions workflow, and an SVG t
    - A cache-busting timestamp is added to the SVG URL to ensure browsers load the latest version.
 
 4. **Automation**:
-   - A GitHub Actions workflow (`workflow.yml`) runs every 3 hours or on manual trigger.
-   - It checks out two repositories: `LeetCode-Stats` (for `Display.svg`) and `Krishnarevanthkarra` (for `README.md`).
+   - A GitHub Actions workflow (`workflow.yml`) runs every 24 hours or on manual trigger.
+   - It checks out two repositories: `LeetCode-Stats-Auto-Updater` (for `Display.svg`) and `Krishnarevanthkarra` (for `README.md`).
    - The workflow installs Python dependencies, runs `app.py`, and commits changes to both repositories.
 
 ---
@@ -51,7 +51,7 @@ The project consists of a Python script, a GitHub Actions workflow, and an SVG t
 ## 📂 Project Structure
 
 ```
-LeetCode-Stats/
+LeetCode-Stats-Auto-Updater/
 ├── app.py              # Main script to fetch stats and generate SVG
 ├── Design.svg          # SVG template for the stats card
 ├── Display.svg         # Generated SVG with updated stats
@@ -68,7 +68,7 @@ Follow these steps to set up the project for your own LeetCode profile.
 ### Prerequisites
 - Python 3.8 or higher
 - A GitHub account with two repositories:
-  - One for the project code (e.g., `LeetCode-Stats`).
+  - One for the project code (e.g., `LeetCode-Stats-Auto-Updater`).
   - One for your profile README (e.g., `username/username`).
 - A LeetCode account with public stats.
 - A GitHub Personal Access Token with `repo` scope for authentication.
