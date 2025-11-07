@@ -50,8 +50,8 @@ jobs:
           cd LeetCode-Stats
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
-          git add Display.svg
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update Display.svg"
+          git add Display.svg README.markdown
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update Display.svg and README.markdown"
           git push origin main
 
       # Commit and push README.md to Krishnarevanthkarra
