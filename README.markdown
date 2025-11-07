@@ -2,7 +2,7 @@
 ## Hello, there!
 <!-- LEETCODE_STATS_START -->
 <img align="center"
-                src ="https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats-Auto-Updater/main/Display.svg?cache_bust=1762533751"
+                src ="https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats-Auto-Updater/main/Display.svg?cache_bust=1762533843"
                 alt ="LeetCodeStats"
                 />
 <!-- LEETCODE_STATS_END -->
