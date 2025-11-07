@@ -23,6 +23,7 @@ class LeetCodeStats(BaseModel):
 #configuration
 leetcode_username = "Krishna_Revanth_Karra"
 graphql_url = "https://leetcode.com/graphql"
+local_readme_filename = "README.markdown"
 query = """query($username: String!){
                 matchedUser(username: $username){
                     submitStats{
@@ -152,6 +153,35 @@ def generate_stats_svg(stats: LeetCodeStats) -> str:
     rendered_svg = template.render(stats = stats, dynamic_change = generate_lang_count(stats))
     return rendered_svg
 
+def update_readme_with_stats(readme_path: str, new_content: str, start_tag: str, end_tag: str) -> bool:
+    """Update README file by replacing content between start and end tags.
+    
+    Args:
+        readme_path: Path to the README file
+        new_content: New content to insert between tags
+        start_tag: Starting HTML comment tag
+        end_tag: Ending HTML comment tag
+        
+    Returns:
+        True if update was successful, False otherwise
+    """
+    if not os.path.exists(readme_path):
+        print(f'README not found at {readme_path}, skipping.')
+        return False
+    
+    with open(readme_path, "r") as file:
+        content = file.read()
+    
+    # Replace content between start and end tags (only first occurrence)
+    pattern = f"{start_tag}.*?{end_tag}"
+    updated_content = re.sub(pattern, f"{start_tag}\n{new_content}\n{end_tag}", content, count=1, flags=re.DOTALL)
+    
+    # Write the updated content back
+    with open(readme_path, "w") as file:
+        file.write(updated_content)
+    
+    return True
+
 if __name__ == '__main__':
     stats = fetch_leetcode_stats()
     print("Fetched Stats:", stats)
@@ -177,37 +207,14 @@ if __name__ == '__main__':
     new_content = base_url.format(timestamp)
     start_tag = "<!-- LEETCODE_STATS_START -->"
     end_tag = "<!-- LEETCODE_STATS_END -->"
-    pattern = f"{start_tag}.*?{end_tag}"
     
     # Update README in Krishnarevanthkarra repository
     readme_path = os.path.join("Krishnarevanthkarra", "README.md")
-    if os.path.exists(readme_path):
-        with open(readme_path, "r") as file:
-            content = file.read()
-
-        # Replace content between start and end tags (only first occurrence)
-        updated_content = re.sub(pattern, f"{start_tag}\n{new_content}\n{end_tag}", content, count=1, flags=re.DOTALL)
-
-        # Write the updated content back to README.md
-        with open(readme_path, "w") as file:
-            file.write(updated_content)
+    if update_readme_with_stats(readme_path, new_content, start_tag, end_tag):
         print('LeetCode stats updated in Krishnarevanthkarra README successfully.')
-    else:
-        print(f'Krishnarevanthkarra README not found at {readme_path}, skipping.')
     
     # Update README.markdown in this repository (LeetCode-Stats-Auto-Updater)
-    local_readme_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "README.markdown")
-    if os.path.exists(local_readme_path):
-        with open(local_readme_path, "r") as file:
-            local_content = file.read()
-        
-        # Replace content between start and end tags (only first occurrence)
-        local_updated_content = re.sub(pattern, f"{start_tag}\n{new_content}\n{end_tag}", local_content, count=1, flags=re.DOTALL)
-        
-        # Write the updated content back to README.markdown
-        with open(local_readme_path, "w") as file:
-            file.write(local_updated_content)
+    local_readme_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), local_readme_filename)
+    if update_readme_with_stats(local_readme_path, new_content, start_tag, end_tag):
         print('LeetCode stats updated in local README.markdown successfully.')
-    else:
-        print(f'Local README.markdown not found at {local_readme_path}, skipping.')
  
