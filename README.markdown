@@ -5,6 +5,7 @@
 A dynamic, automated solution to display your LeetCode statistics in a visually appealing SVG card, seamlessly integrated into your GitHub profile README. This project fetches your LeetCode stats, generates a custom SVG card, and updates your README with the latest stats using GitHub Actions.
 
 ---
+![Metrics](https://raw.githubusercontent.com/krishnarevanthkarra/LeetCode-Stats-Auto-Updater/main/display-1.svg)
 
 ## 📖 Project Overview
 
