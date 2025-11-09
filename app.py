@@ -3,8 +3,6 @@ from pydantic import BaseModel
 from jinja2 import Environment, FileSystemLoader
 import requests
 import json
-import re
-import time
 import os
 
 #class for easy access of stats
@@ -167,28 +165,5 @@ if __name__ == '__main__':
     with open(svg_file_path, "w") as file:
         file.write(generated_design)
         print("Written in Display.svg successfully")
-    
-    base_url = """<img align="center"
-                src ="https://raw.githubusercontent.com/Krishnarevanthkarra/LeetCode-Stats-Auto-Updater/main/Display.svg?cache_bust={}"
-                alt ="LeetCodeStats"
-                />"""
-    readme_path = os.path.join("Krishnarevanthkarra", "README.md")
-
-
-    with open(readme_path, "r") as file:
-        content = file.read()
-
-    timestamp = int(time.time())
-    new_content = base_url.format(timestamp)
-    start_tag = "<!-- LEETCODE_STATS_START -->"
-    end_tag = "<!-- LEETCODE_STATS_END -->"
-
-    # Replace content between start and end tags
-    pattern = f"{start_tag}.*?{end_tag}"
-    updated_content = re.sub(pattern, f"{start_tag}\n{new_content}\n{end_tag}", content, flags=re.DOTALL)
-
-    # Write the updated content back to README.md
-    with open(readme_path, "w") as file:
-        file.write(updated_content)
-    print('LeetCode stats updated successfully.')
  
+
