@@ -1,4 +1,4 @@
-name: Update LeetCode Stats in README
+name: Update LeetCode Stats
 
 on:
   schedule:
@@ -18,14 +18,6 @@ jobs:
           repository: Krishnarevanthkarra/LeetCode-Stats # Repo to Clone
           path: LeetCode-Stats # Saves the cloned repo under the provided name
           token: ${{ secrets.LCToken }}  # Token is used for Authentication instead of passwords
-
-      # Checkout Krishnarevanthkarra (where README.md lives)
-      - name: Checkout Krishnarevanthkarra repository
-        uses: actions/checkout@v4 # Clones a Github Rep
-        with:
-          repository: Krishnarevanthkarra/Krishnarevanthkarra # Rep to clone
-          path: Krishnarevanthkarra # Saves the cloned repo under the provided name
-          token: ${{ secrets.LCToken }} # Token is used for Authentication instead of passwords
 
       #  Set up Python
       - name: Set up Python
@@ -52,14 +44,4 @@ jobs:
           git config user.email "action@github.com"
           git add Display.svg
           git diff --quiet && git diff --staged --quiet || git commit -m "Update Display.svg"
-          git push origin main
-
-      # Commit and push README.md to Krishnarevanthkarra
-      - name: Commit and push README.md to Krishnarevanthkarra
-        run: |
-          cd Krishnarevanthkarra
-          git config user.name "GitHub Action"
-          git config user.email "action@github.com"
-          git add README.md
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update LeetCode Stats in README"
           git push origin main
