@@ -1,9 +1,7 @@
 #Importing Required Libraries
 from pydantic import BaseModel
-from jinja2 import Environment, FileSystemLoader
 import requests
 import json
-import os
 
 #class for easy access of stats
 class LeetCodeStats(BaseModel):
@@ -144,9 +142,8 @@ def generate_lang_count(stats: LeetCodeStats) -> str:
 
     
 def generate_stats_svg(stats: LeetCodeStats) -> str:
-    template_dir = os.path.dirname(os.path.abspath(__file__))
-    env = Environment(loader = FileSystemLoader(template_dir))
-    template = env.get_template('Design.svg')
+    with open('Design.svg', 'r', encoding='utf-8') as design:
+        template = design.read()
     rendered_svg = template.render(stats = stats, dynamic_change = generate_lang_count(stats))
     return rendered_svg
 
@@ -159,11 +156,10 @@ if __name__ == '__main__':
         print("Generated SVG is empty. Check template or stats.")
     else:
         print("Generated SVG successfully.")
-    
-    svg_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Display.svg")
-    print(f"Saving to {svg_file_path}")
-    with open(svg_file_path, "w") as file:
-        file.write(generated_design)
+   
+    with open('Display.svg', 'w', encoing='utf-8') as display:
+        display.write(generated_design)
         print("Written in Display.svg successfully")
  
+
 
