@@ -1,5 +1,6 @@
 #Importing Required Libraries
 from pydantic import BaseModel
+from jinja2 import Template
 import requests
 import json
 
@@ -143,7 +144,8 @@ def generate_lang_count(stats: LeetCodeStats) -> str:
     
 def generate_stats_svg(stats: LeetCodeStats) -> str:
     with open('Design.svg', 'r', encoding='utf-8') as design:
-        template = design.read()
+        svg_text = design.read()
+    template = Template(svg_text)
     rendered_svg = template.render(stats = stats, dynamic_change = generate_lang_count(stats))
     return rendered_svg
 
@@ -161,5 +163,6 @@ if __name__ == '__main__':
         display.write(generated_design)
         print("Written in Display.svg successfully")
  
+
 
 
