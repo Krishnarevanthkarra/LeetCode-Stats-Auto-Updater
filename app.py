@@ -159,10 +159,11 @@ if __name__ == '__main__':
     else:
         print("Generated SVG successfully.")
    
-    with open('Display.svg', 'w', encoing='utf-8') as display:
+    with open('Display.svg', 'w', encoding='utf-8') as display:
         display.write(generated_design)
         print("Written in Display.svg successfully")
  
+
 
 
 
