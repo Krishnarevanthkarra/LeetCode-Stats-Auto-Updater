@@ -5,7 +5,7 @@
         <!-- Total Problems && Global rank -->
         <text x="26" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#ffffff">1311/3902</text>
         <text x="26" y="60" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-transform="uppercase" letter-spacing="0.5">SOLVED</text>
-        <text x="250" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#ffffff">11116</text>
+        <text x="250" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#ffffff">11097</text>
         <text x="250" y="60" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-transform="uppercase" letter-spacing="0.5">GLOBAL RANK</text>
         
         <!-- Divider -->
@@ -32,7 +32,7 @@
 
 
 <text x="390" y="110" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">C++</text>
-<text x="550" y="110" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">364</text>
+<text x="550" y="110" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">365</text>
 
 
 <text x="390" y="140" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">MySQL</text>
