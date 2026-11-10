@@ -23,7 +23,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5 # Set ups a clean python environment
         with:
-          python-version: "3.8"
+          python-version: "3.12"
 
       # Install dependencies
       - name: Install dependencies
